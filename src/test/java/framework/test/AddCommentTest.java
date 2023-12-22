@@ -35,7 +35,6 @@ public class AddCommentTest extends TestRunner {
                 Arguments.of(UserRepository.getValidUser2())
         );
     }
-
         @ParameterizedTest(name = "{index} => user={0}")
         @MethodSource("provideData")
 

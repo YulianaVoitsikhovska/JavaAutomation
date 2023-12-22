@@ -55,8 +55,6 @@ public class AddCommentTest extends TestRunner {
 
             wait.until(ExpectedConditions.elementToBeClickable(myLocators.getUserNameDropdown()));
 
-            guestFunctions.signOut();
-
         }
 
     @ParameterizedTest(name = "{index} => user={0}")
@@ -75,8 +73,6 @@ public class AddCommentTest extends TestRunner {
         assertThat(myLocators.getAuthorIconInitial().getText(), is(userData.getInitial()));
 
         wait.until(ExpectedConditions.elementToBeClickable(myLocators.getUserNameDropdown()));
-
-        guestFunctions.signOut();
 
     }
 

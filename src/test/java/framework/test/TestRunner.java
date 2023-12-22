@@ -125,6 +125,7 @@ public abstract class TestRunner {
             takePageSource();
        }
 
+        guestFunctions.signOut();
         driver.manage().deleteAllCookies();
 
         localStorageJS.removeItemFromLocalStorage("accessToken");

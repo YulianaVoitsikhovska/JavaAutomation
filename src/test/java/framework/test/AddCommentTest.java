@@ -36,7 +36,6 @@ public class AddCommentTest extends TestRunner {
         );
     }
 
-
         @ParameterizedTest(name = "{index} => user={0}")
         @MethodSource("provideData")
 

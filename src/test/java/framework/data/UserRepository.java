@@ -1,8 +1,5 @@
 package framework.data;
 
-import framework.tools.CSVReader;
-import java.util.ArrayList;
-import java.util.List;
 public final class UserRepository {
     private UserRepository() {
     }
@@ -16,8 +13,6 @@ public final class UserRepository {
     }
 
     public static UserData getValidUser2() {
-        return new UserData("juliana.sergeeva@gmail.com", "Aa12345!", "Yuli comment", "Yuliana", "M");
+        return new UserData("juliana.sergeeva@gmail.com", "Aa12345!", "Yuli comment", "Yuliana", "Y");
     }
-
-
 }

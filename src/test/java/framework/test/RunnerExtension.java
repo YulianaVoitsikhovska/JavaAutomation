@@ -13,6 +13,4 @@ class RunnerExtension implements AfterTestExecutionCallback {
         //
         TestRunner.isTestSuccessful = !testResult;
     }
-
-
 }

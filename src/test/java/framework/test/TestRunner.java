@@ -12,6 +12,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,9 +27,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @ExtendWith(RunnerExtension.class)
 
@@ -44,7 +43,6 @@ public abstract class TestRunner {
     protected static locators myLocators;
     protected static LocalStorageJS localStorageJS;
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
-
 
     private void takeScreenShot() {
         logger.debug("Start takeScreenShot()");
@@ -123,8 +121,8 @@ public abstract class TestRunner {
     @AfterEach
     public void tearThis(TestInfo testInfo) {
         if (!isTestSuccessful) {
-            // Log.error
             logger.error("Test_Name = " + testInfo.getDisplayName() + " failed");
+            // Log.error
 //            System.out.println("\t\t\tTest_Name = " + testInfo.getDisplayName() + " fail");
 //            System.out.println("\t\t\tTest_Method = " + testInfo.getTestMethod() + " fail");
 
@@ -140,6 +138,4 @@ public abstract class TestRunner {
 
         driver.navigate().refresh();
     }
-
-
 }

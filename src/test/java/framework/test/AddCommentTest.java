@@ -24,6 +24,8 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import framework.library.GuestFunctions;
+import framework.library.locators;
 
 public class AddCommentTest extends TestRunner {
 
@@ -33,12 +35,11 @@ public class AddCommentTest extends TestRunner {
                 Arguments.of(UserRepository.getValidUser2())
         );
     }
-
         @ParameterizedTest(name = "{index} => user={0}")
         @MethodSource("provideData")
 
         public void checkCommentText (UserData userData){
-        logger.info("Start checkCommentText() with user = " + userData);
+            logger.info("Start checkCommentText() with user = " + userData);
            guestFunctions.openFirstNewsPage(userData);
            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 

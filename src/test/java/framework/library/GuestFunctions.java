@@ -8,12 +8,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class GuestFunctions {
     public static final Logger logger = LoggerFactory.getLogger(GuestFunctions.class);
@@ -23,7 +23,7 @@ public class GuestFunctions {
 
     public GuestFunctions(WebDriver driver, locators locators) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         this.locators = locators;
     }
 
@@ -57,7 +57,7 @@ public class GuestFunctions {
     }
 
     public void openFirstNewsPage(UserData userData) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         signIn(userData);
         locators.getEcoNews().click();
         wait.until(ExpectedConditions.elementToBeClickable(locators.getFirstNews()));
@@ -72,7 +72,5 @@ public class GuestFunctions {
             throw new AssertionError("Expected text not found within the specified timeout: " + expectedText);
         }
     }
-
-
 }
 

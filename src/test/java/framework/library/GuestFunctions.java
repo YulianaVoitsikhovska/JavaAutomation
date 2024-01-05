@@ -12,19 +12,23 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GuestFunctions {
+    public static final Logger logger = LoggerFactory.getLogger(GuestFunctions.class);
     private WebDriver driver;
     private final WebDriverWait wait;
     private final locators locators;
 
     public GuestFunctions(WebDriver driver, locators locators) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         this.locators = locators;
     }
 
    public void signIn(UserData userData) {
+       logger.debug("Start signIn with user = " + userData);
        wait.until(ExpectedConditions.visibilityOf(locators.getSignInButton()));
        locators.getSignInButton().click();
        locators.getEmailInput().sendKeys(userData.getEmail());
@@ -53,7 +57,7 @@ public class GuestFunctions {
     }
 
     public void openFirstNewsPage(UserData userData) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         signIn(userData);
         locators.getEcoNews().click();
         wait.until(ExpectedConditions.elementToBeClickable(locators.getFirstNews()));

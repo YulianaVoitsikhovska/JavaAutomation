@@ -26,6 +26,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @ExtendWith(RunnerExtension.class)
 
 public abstract class TestRunner {
@@ -40,9 +43,11 @@ public abstract class TestRunner {
     protected static GuestFunctions guestFunctions;
     protected static locators myLocators;
     protected static LocalStorageJS localStorageJS;
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
-    private static void takeScreenShot() {
+    private void takeScreenShot() {
+        logger.debug("Start takeScreenShot()");
         //String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
         LocalDateTime localDate = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(TIME_TEMPLATE);
@@ -58,6 +63,7 @@ public abstract class TestRunner {
     }
 
     private void takePageSource() {
+        logger.debug("Start takePageSource()");
         String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
         String pageSource = driver.getPageSource();
         byte[] strToBytes = pageSource.getBytes();
@@ -118,8 +124,9 @@ public abstract class TestRunner {
     public void tearThis(TestInfo testInfo) {
         if (!isTestSuccessful) {
             // Log.error
-            System.out.println("\t\t\tTest_Name = " + testInfo.getDisplayName() + " fail");
-            System.out.println("\t\t\tTest_Method = " + testInfo.getTestMethod() + " fail");
+            logger.error("Test_Name = " + testInfo.getDisplayName() + " failed");
+//            System.out.println("\t\t\tTest_Name = " + testInfo.getDisplayName() + " fail");
+//            System.out.println("\t\t\tTest_Method = " + testInfo.getTestMethod() + " fail");
 
             takeScreenShot();
             takePageSource();

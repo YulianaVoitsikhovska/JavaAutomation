@@ -1,5 +1,7 @@
 package framework.data;
 
+import java.util.ArrayList;
+import java.util.List;
 public class UserData {
         private String email;
         private String password;
@@ -47,4 +49,4 @@ public class UserData {
                 ", initial='" + initial + '\'' +
                 '}';
     }
-}
+   }

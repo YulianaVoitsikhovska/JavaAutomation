@@ -25,7 +25,6 @@ import java.util.stream.Stream;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-
 public class AddCommentTest extends TestRunner {
 
     private static Stream<Arguments> provideData() {
